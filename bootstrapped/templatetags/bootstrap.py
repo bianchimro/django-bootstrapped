@@ -5,21 +5,21 @@ from django.template.loader import get_template
 
 register = template.Library()
 
-SCRIPT_TAG = '<script src="%sbooststrap/js/%s.js" type="text/javascript"></script>'
+SCRIPT_TAG = '<script src="%sbootstrapped/js/%s" type="text/javascript"></script>'
 PREFIX_SCRIPTS = ['affix', 'alert', 'button', 'carousel', 'collapse', 'dropdown', 'modal', 
         'popover', 'scrollspy', 'tab', 'tooltip', 'transition', 'typeahead']
         
-NO_PREFIX_SCRIPTS = ['jquery']
+NO_PREFIX_SCRIPTS = ['jquery', 'bootstrap.min']
 
 def getScriptTag(featureName):
     
     if featureName in NO_PREFIX_SCRIPTS:
         out = '%s.js' % featureName
-        return SCRIPT_TAG % (out, settings.STATIC_URL)        
+        return SCRIPT_TAG % (settings.STATIC_URL, out)        
         
     if featureName in PREFIX_SCRIPTS:
         out = 'bootstrap-%s.js' % featureName
-        return SCRIPT_TAG % (out, settings.STATIC_URL)        
+        return SCRIPT_TAG % (settings.STATIC_URL, out)        
         
     raise ValueError("bootstrapped: Feature %s not available" % featureName)
     
@@ -36,10 +36,12 @@ class BootstrapJSNode(template.Node):
 
     def render_all_scripts(self):
     
-        results = [ getScriptTag('jquery'), ]
+        results = [ getScriptTag('jquery'), getScriptTag('bootstrap.min'),]
+        """
         for x in PREFIX_SCRIPTS:
             results.append( getScriptTag(x))
-    
+        """
+        
         return '\n'.join(results)
 
     def render(self, context):

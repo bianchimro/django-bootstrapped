@@ -18,11 +18,13 @@ This fork
 
 This fork updates the django-bootstrapped project:
 
-* Bootstrap v.2.0.2
+* Bootstrap v.2.1.1.
 
 * base template called "base_bootstrap.html"
 
 * adds the bootstrapform template tag, taken from https://github.com/bianchimro/django-bootstrap-form
+
+* adds less
 
 
 Installation
@@ -48,10 +50,15 @@ Configuration
 Template Usage
 =================
 This application exposes a few template tags for including the Bootstrap toolkit files.
-
 Load the template tags before usage::
 
     {% load bootstrap %}
+
+
+Js and css template tags
+------------------------
+These tags are used to load js and css from the bootstrap toolkit
+
 
 ```bootstrap_css```
 
@@ -63,6 +70,7 @@ settings.TEMPLATE_DEBUG is set to True::
 Output::
 
     <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
+
 
 ```bootstrap_js```
 
@@ -98,4 +106,16 @@ outputs a script tag for it::
 Output::
 
     <link rel="stylesheet/less" type="text/css" href="/static/lib/bootstrap_custom.less" media="all">
-    <script src="/static/js/less-1.1.5.min.js" type="text/javascript"></script>
+    <script src="/static/bootstrapped/js/less-1.3.0.min.js" type="text/javascript"></script>
+
+
+
+Form tags
+---------
+
+Form tags are used to output a form in bootstrap style
+
+    
+    {{ form|bootstrap }}
+
+    {{ form.<field name>|bootstrap }} - To output individual fields
