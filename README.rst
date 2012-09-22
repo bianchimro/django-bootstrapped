@@ -22,7 +22,7 @@ This fork updates the django-bootstrapped project:
 
 * base template called "base_bootstrap.html"
 
-* adds the bootstrapform template tag, taken from https://github.com/bianchimro/django-bootstrap-form
+* adds the bootstrapform filter tags, taken from https://github.com/bianchimro/django-bootstrap-form
 
 * adds less
 
@@ -110,10 +110,10 @@ Output::
 
 
 
-Form tags
----------
+Form filters
+------------
 
-Form tags are used to output a form in bootstrap style
+Form filters are used to output a form in bootstrap style
 
     
     {{ form|bootstrap }}
