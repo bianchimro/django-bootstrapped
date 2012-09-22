@@ -13,16 +13,19 @@ NO_PREFIX_SCRIPTS = ['jquery']
 
 def getScriptTag(featureName):
     
-    
     if featureName in NO_PREFIX_SCRIPTS:
         out = '%s.js' % featureName
+        return SCRIPT_TAG % (out, settings.STATIC_URL)        
         
     if featureName in PREFIX_SCRIPTS:
         out = 'bootstrap-%s.js' % featureName
-        
-    return SCRIPT_TAG % out
+        return SCRIPT_TAG % (out, settings.STATIC_URL)        
         
     raise ValueError("bootstrapped: Feature %s not available" % featureName)
+    
+
+        
+    
     
 
 
