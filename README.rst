@@ -113,9 +113,8 @@ Output::
 Form filters
 ------------
 
-Form filters are used to output a form in bootstrap style
+Form filters are used to output a form in bootstrap style. The 'bootstrapform' filter does the job:
 
-    
-    {{ form|bootstrap }}
+    {{ form|bootstrapform }}
 
-    {{ form.<field name>|bootstrap }} - To output individual fields
+    {{ form.<field name>|bootstrapform }} - To output individual fields
